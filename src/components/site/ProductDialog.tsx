@@ -1,7 +1,7 @@
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Product } from "@/data/products";
 import { ProductCanvas } from "@/components/three/ProductCanvas";
-import { Plus, Minus, ShoppingBag, RotateCcw, Star, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { Plus, Minus, ShoppingBag, RotateCcw, Star, ZoomIn, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/store/cart";
 
@@ -160,7 +160,16 @@ export const ProductDialog = ({ product, onClose }: Props) => {
             </div>
 
             {/* ── RIGHT: product info ── */}
-            <div className="flex flex-col p-7 md:p-9 overflow-y-auto md:w-1/2 bg-background">
+            <div className="relative flex flex-col p-7 md:p-9 overflow-y-auto md:w-1/2 bg-background">
+              
+              {/* Close button */}
+              <button
+                onClick={handleClose}
+                className="absolute top-4 right-4 z-10 flex items-center justify-center h-8 w-8 rounded-full bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors md:hidden"
+                aria-label="Close dialog"
+              >
+                <X className="h-4 w-4" />
+              </button>
 
               {/* Category + badge */}
               <div className="flex items-center gap-2 flex-wrap">
